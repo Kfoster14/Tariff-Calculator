@@ -4,11 +4,11 @@ import {LabelContainer} from './StyledComponents'
 const formReducer = (state, event) => {
   if(event.reset) {
     return {
-      dailyUsage: 0,
-      fee: 0,
-      connectCharge: 0,
-      serviceCharge: 0,
-      feedIn: 0,
+      dailyUsage: "",
+      fee: "",
+      connectCharge: "",
+      serviceCharge: "",
+      feedIn: "",
     }
   }
   
@@ -23,11 +23,20 @@ const Calc = () => {
   
   const [submitting, setSubmitting] = useState(false);
 
-  const [results, setResults] = useState()
+  const [results, setResults] = useState({
+      dailyUsage: "",
+      fee: "",
+      connectCharge: "",
+      serviceCharge: "",
+      feedIn: "",
+      isResult: false,
+
+  });
 
   const handleSubmit = event => {
     event.preventDefault();
     setSubmitting(true);
+    calculateResults(formData);
 
     setTimeout(() => {
       setSubmitting(false);
@@ -39,6 +48,7 @@ const Calc = () => {
   
   const handleChange = event => {
     setFormData({
+      ...formData,
       name: event.target.name,
       value: event.target.value,
     });
@@ -52,31 +62,31 @@ const Calc = () => {
         <fieldset disabled={submitting}>
           <label>
             Your average daily usage:
-          <input type="number" name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || 0} />
+          <input type="number" name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
           </label>
         </fieldset>
         <fieldset disabled={submitting}>
           <label>
             Your provider's electricity fee:
-          <input type="number" name="fee" onChange={handleChange} value={formData.fee || 0} />
+          <input type="number" name="fee" onChange={handleChange} value={formData.fee || ""} />
           </label>
         </fieldset>
         <fieldset disabled={submitting}>
           <label>
             Your provider's daily connection charge:
-          <input type="number" name="connectCharge" onChange={handleChange} value={formData.connectCharge || 0} />
+          <input type="number" name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
           </label>
         </fieldset>
         <fieldset disabled={submitting}>
           <label>
             Your provider's daily solar metering service charge ($):
-          <input type="text" name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || 0} />
+          <input type="text" name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
           </label>
         </fieldset>
         <fieldset disabled={submitting}>    
           <label>
             Your average daily feed-in (the amount you export to the grid in kwh):
-          <input type="text" name="feedIn" onChange={handleChange} value={formData.feedIn || 0} />
+          <input type="text" name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
           </label>
         </fieldset>
             
