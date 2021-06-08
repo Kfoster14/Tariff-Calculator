@@ -1,108 +1,155 @@
-import React, { useReducer, useState} from 'react'
-import {LabelContainer} from './StyledComponents'
-
-const formReducer = (state, event) => {
-  if(event.reset) {
-    return {
-      dailyUsage: "",
-      fee: "",
-      connectCharge: "",
-      serviceCharge: "",
-      feedIn: "",
-    }
-  }
-  
-  return {
-    ...state,
-    [event.name]: event.value
-  }
-}
+import React, { useState} from 'react'
+import NumberFormat from 'react-number-format';
+//import {LabelContainer} from './StyledComponents'
 
 const Calc = () => {
-  const [formData, setFormData] =useReducer(formReducer, {});
-  
-  const [submitting, setSubmitting] = useState(false);
-
-  const [results, setResults] = useState({
-      dailyUsage: "",
-      fee: "",
-      connectCharge: "",
-      serviceCharge: "",
-      feedIn: "",
-      isResult: false,
-
+  const [formData, setFormData] =useState({
+    dailyUsage: '',
+    fee: '',
+    connectCharge: '', 
+    serviceCharge: '',
+    feedIn: '',
   });
+    
+  const [results, setResults] = useState({
+    requiredFeedIn: '',
+    isResult: false,
+  
+  });
+
+  const [error, setError] = useState('');
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  }
+  // Validation of entered data
+  const isValid = () => {
+    const { dailyUsage, fee, connectCharge, serviceCharge, feedIn } = formData;
+    let actualError = '';
+    if (!dailyUsage || !fee || !connectCharge || !serviceCharge || !feedIn) {
+      actualError = 'All values are required';
+    }
+    if (isNaN(dailyUsage) || isNaN(fee) || isNaN(connectCharge) || isNaN(serviceCharge) || isNaN(feedIn)) {
+      actualError = 'All values must be a valid number';
+    }
+    if (dailyUsage <= 0 || fee <= 0 || connectCharge <= 0 || serviceCharge <= 0 || feedIn <= 0) {
+      actualError = 'All values must be a positive number';
+    }
+    if (actualError) {
+      setError(actualError);
+      return false;
+    }
+    return true;
+  }
 
   const handleSubmit = event => {
     event.preventDefault();
-    setSubmitting(true);
-    calculateResults(formData);
-
-    setTimeout(() => {
-      setSubmitting(false);
-      setFormData({
-        reset: true
-      })
-    }, 5000);
+    if (isValid()) {
+      setError('');
+      calculateResults(formData);
+    }
   }
   
-  const handleChange = event => {
-    setFormData({
-      ...formData,
-      name: event.target.name,
-      value: event.target.value,
+  const calculateResults = ({dailyUsage, fee, connectCharge, serviceCharge, feedIn}) => {
+    const gst = 1.1;
+    const usageFee = Number(dailyUsage) * Number(fee);
+    const usageFeeGst = usageFee * gst;
+    const dailyConnectCharge = Number(connectCharge);
+    const meterServiceCharge = Number(serviceCharge);
+    const dailyFeedIn = Number(feedIn);
+    const calculatedFeedIn = (usageFeeGst + dailyConnectCharge + meterServiceCharge) / (dailyFeedIn);
+    console.log(usageFee);
+    console.log(usageFeeGst);
+    console.log(dailyConnectCharge);
+    console.log(meterServiceCharge);
+    console.log(dailyFeedIn);
+    console.log(calculatedFeedIn);
+    
+    setResults({
+      requiredFeedIn: calculatedFeedIn,
+      isResult: true,
     });
+    return;
+  };
+
+  // Clear input fields
+  const clearFields = () => {
+    setFormData({
+      dailyUsage: '',
+      fee: '',
+      connectCharge: '', 
+      serviceCharge: '',
+      feedIn: '',
+    })
+    setResults({
+      requiredFeedIn: '',
+      isResult: false,
+    })
   }
 
   return (
-      <LabelContainer>
+    <div className='calculator'>
+      <div className='form'>
         <h1>Calculator</h1>
-    
-      <form onSubmit={handleSubmit}>
-        <fieldset disabled={submitting}>
-          <label>
-            Your average daily usage:
-          <input type="number" name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
-          </label>
-        </fieldset>
-        <fieldset disabled={submitting}>
-          <label>
-            Your provider's electricity fee:
-          <input type="number" name="fee" onChange={handleChange} value={formData.fee || ""} />
-          </label>
-        </fieldset>
-        <fieldset disabled={submitting}>
-          <label>
-            Your provider's daily connection charge:
-          <input type="number" name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
-          </label>
-        </fieldset>
-        <fieldset disabled={submitting}>
-          <label>
-            Your provider's daily solar metering service charge ($):
-          <input type="text" name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
-          </label>
-        </fieldset>
-        <fieldset disabled={submitting}>    
-          <label>
-            Your average daily feed-in (the amount you export to the grid in kwh):
-          <input type="text" name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
-          </label>
-        </fieldset>
-            
-        <button type="submit" disabled={submitting}>Submit</button>
-      </form>
-      {submitting && 
-          <div>
-            You are submitting the following:
-            <ul>
-              {Object.entries(formData).map(([name, value]) => (
-              <li key={name}><strong>{name}</strong>:{value.toString()}</li>
-              ))}
-            </ul>
-          </div>}
-      </LabelContainer>
-    )
-  }
+        <p className='error'>{error}</p>
+        <form onSubmit={handleSubmit}>
+          {!results.isResult ? (
+            <div className="form-items">
+              <div>
+                <label>Your average daily usage:</label>
+                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
+              </div>
+              <div>
+                <label>Your provider's electricity fee:</label>
+                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="fee" onChange={handleChange} value={formData.fee || ""} />
+              </div>
+              <div>
+                <label>Your provider's daily connection charge:</label>
+                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
+              </div>
+              <div>
+                <label>Your provider's daily solar metering service charge ($):</label>
+                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
+              </div>
+              <div>    
+                <label>Your average daily feed-in (the amount you export to the grid in kwh):</label>
+                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
+              </div> 
+              <button type="submit">Submit</button>
+            </div>
+        ) : (
+            <div className="summary">
+              <h2>You've entered the following data:</h2>
+              <h4>
+              Your average daily usage: {formData.dailyUsage} <br />
+              Your provider's electricity fee: {formData.fee} <br />
+              Your provider's daily connection charge: {formData.connectCharge} <br />
+              Your provider's daily solar metering service charge ($): {formData.serviceCharge} <br />
+              Your average daily feed-in (the amount you export to the grid in kwh): {formData.feedIn} <br />
+              </h4>
+              <h2>Results</h2>
+              <p>Based on your inputs, you need the following feed-in tariff to break even on your electricity bill.</p>
+              <p>Anything above this value will likely push your bill into credit.</p>
+              <div>
+                <label>Required feed-in tariff:</label>
+                <NumberFormat decimalScale={9} fixedDecimalScale={true} value={results.requiredFeedIn} />
+              </div>
+              {/* Button to clear fields */}
+              <input
+                className='button'
+                value='Calculate again'
+                type='button'
+                onClick={clearFields}
+              />
+            </div>
+          )}
+        </form>
+      </div>
+    </div>  
+  );
+}
   
-  export default Calc
+  export default Calc;
