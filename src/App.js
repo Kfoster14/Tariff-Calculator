@@ -1,23 +1,22 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom"
-import About from './components/About'
+import {BrowserRouter as Router, Route} from "react-router-dom"
+import NavBar from './components/NavBar';
+import Home from './components/Home'
 import Calc from './components/Calc'
 import NotFound from './components/NotFound'
 
 
 const App = () => {
   return (
-    <Router>
-      <ul>
-        <li><Link to="/">About</Link></li>
-        <li><Link to="/calc">Calculator</Link></li>
-      </ul>
-      <Switch>
-        <Route exact path="/" component={About} />
-        <Route path="/calc" component={Calc} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    <div className="App" style={{ position: "relative" }}>
+        <Router>
+            <NavBar></NavBar>
+            <Route exact path="/" component={Home}></Route>
+            <Route path="/calculator" component={Calc}></Route>
+            <Route path="/notfound" component={NotFound}></Route>
+        </Router>
+      </div>
+    
   )
 }
 

@@ -1,6 +1,6 @@
 import React, { useState} from 'react'
 import NumberFormat from 'react-number-format';
-//import {LabelContainer} from './StyledComponents'
+import {LabelContainer} from './StyledComponents'
 
 const Calc = () => {
   const [formData, setFormData] =useState({
@@ -91,7 +91,7 @@ const Calc = () => {
   }
 
   return (
-    <div className='calculator'>
+    <LabelContainer>
       <div className='form'>
         <h1>Calculator</h1>
         <p className='error'>{error}</p>
@@ -148,7 +148,7 @@ const Calc = () => {
           )}
         </form>
       </div>
-    </div>  
+    </LabelContainer>  
   );
 }
   
