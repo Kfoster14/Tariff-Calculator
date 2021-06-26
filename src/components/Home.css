@@ -4,8 +4,13 @@
     width: 100%;
     top: 22rem;
     z-index: 1;
-    margin-top: -125px;
+    margin-top: -180px;
     text-align: center;
+    font-family: 'Happy Monkey', cursive;
+    color: #343a40;
+    font-weight: bold;
+    
+    
 }
 
 .title-box > p {
@@ -13,6 +18,11 @@
     width: 100%;
     top: 22rem;
     z-index: 1;
-    margin-top: -125px;
+    margin-top: -60px;
     text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.home-page {
+    margin-right: 1000px;
 }

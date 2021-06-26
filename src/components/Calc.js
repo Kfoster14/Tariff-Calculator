@@ -1,6 +1,8 @@
 import React, { useState} from 'react'
 import NumberFormat from 'react-number-format';
-import {LabelContainer} from './StyledComponents'
+import {LabelContainer, LabelItem, SubmitItem
+} from './StyledComponents'
+import {} from './StyledComponents'
 
 const Calc = () => {
   const [formData, setFormData] =useState({
@@ -93,32 +95,33 @@ const Calc = () => {
   return (
     <LabelContainer>
       <div className='form'>
-        <h1>Calculator</h1>
         <p className='error'>{error}</p>
         <form onSubmit={handleSubmit}>
           {!results.isResult ? (
             <div className="form-items">
-              <div>
+              <LabelItem>
                 <label>Your average daily usage:</label>
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
-              </div>
-              <div>
+              </LabelItem>
+              <LabelItem>
                 <label>Your provider's electricity fee:</label>
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="fee" onChange={handleChange} value={formData.fee || ""} />
-              </div>
-              <div>
+              </LabelItem>
+              <LabelItem>
                 <label>Your provider's daily connection charge:</label>
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
-              </div>
-              <div>
+              </LabelItem>
+              <LabelItem>
                 <label>Your provider's daily solar metering service charge ($):</label>
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
-              </div>
-              <div>    
+              </LabelItem>
+              <LabelItem>    
                 <label>Your average daily feed-in (the amount you export to the grid in kwh):</label>
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
-              </div> 
-              <button type="submit">Submit</button>
+              </LabelItem> 
+              <SubmitItem>
+                <button type="submit" className="submit">Submit</button>
+              </SubmitItem>
             </div>
         ) : (
             <div className="summary">
@@ -152,4 +155,4 @@ const Calc = () => {
   );
 }
   
-  export default Calc;
+export default Calc;

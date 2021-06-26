@@ -1,0 +1,10 @@
+.footer-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #d9d9d7;
+    font-family: 'Josefin Sans', 'sans-serif';
+    background-color: #9df3c4;
+    color: #343a40;
+}
