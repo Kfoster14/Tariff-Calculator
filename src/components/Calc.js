@@ -1,8 +1,11 @@
 import React, { useState} from 'react'
 import NumberFormat from 'react-number-format';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+import Button from "react-bootstrap/Button";
 import {LabelContainer, LabelItem, SubmitItem
 } from './StyledComponents'
-import {} from './StyledComponents'
+
 
 const Calc = () => {
   const [formData, setFormData] =useState({
@@ -98,7 +101,7 @@ const Calc = () => {
         <p className='error'>{error}</p>
         <form onSubmit={handleSubmit}>
           {!results.isResult ? (
-            <div className="form-items">
+            <div id="formitems">
               <LabelItem>
                 <label>Your average daily usage:</label>
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
@@ -108,7 +111,7 @@ const Calc = () => {
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="fee" onChange={handleChange} value={formData.fee || ""} />
               </LabelItem>
               <LabelItem>
-                <label>Your provider's daily connection charge:</label>
+                  <label>Your provider's daily connection charge:</label>
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
               </LabelItem>
               <LabelItem>
@@ -116,9 +119,28 @@ const Calc = () => {
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
               </LabelItem>
               <LabelItem>    
-                <label>Your average daily feed-in (the amount you export to the grid in kwh):</label>
+                <label>Your average daily feed-in:</label>
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
               </LabelItem> 
+              <>
+                {['right'].map((placement) => (
+                  <OverlayTrigger
+                    trigger="click"
+                    key={placement}
+                    placement={placement}
+                    overlay={
+                      <Popover id={`popover-positioned-${placement}`}>
+                        <Popover.Title as="h3">{`Popover ${placement}`}</Popover.Title>
+                        <Popover.Content>
+                          <strong>Holy guacamole!</strong> Check this info.
+                        </Popover.Content>
+                      </Popover>
+                    }
+                  >
+                    <Button variant="secondary">Popover on {placement}</Button>
+                  </OverlayTrigger>
+                ))}
+              </>
               <SubmitItem>
                 <button type="submit" className="submit">Submit</button>
               </SubmitItem>

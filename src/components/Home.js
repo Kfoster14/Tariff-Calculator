@@ -12,8 +12,7 @@ const Home = () => {
         <img src={house} alt="house" />;
         <h1>Solar Tariff Calculator</h1>
         <p>
-            This is a modified jumbotron that occupies the entire horizontal space of
-            its parent.
+            Hi! Do you have solar panels? This is a simple calculator to help you figure out the best feed-in tariff .
         </p>
         
         <Calc />
