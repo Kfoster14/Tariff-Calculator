@@ -10,11 +10,7 @@ const Home = () => {
     return (
       <Jumbotron fluid className="title-box">
         <img src={house} alt="house" />;
-        <h1>Solar Tariff Calculator</h1>
-        <p>
-            Hi! Do you have solar panels? This is a simple calculator to help you figure out the best feed-in tariff .
-        </p>
-        
+        <p>Hi! Do you have solar panels? This is a simple calculator to help you figure out the best feed-in tariff.</p>
         <Calc />
         <Footer />
       </Jumbotron>

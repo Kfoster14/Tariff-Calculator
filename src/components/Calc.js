@@ -1,8 +1,8 @@
 import React, { useState} from 'react'
 import NumberFormat from 'react-number-format';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
-import Button from "react-bootstrap/Button";
+// import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+// import Popover from 'react-bootstrap/Popover';
+// import Button from "react-bootstrap/Button";
 import {LabelContainer, LabelItem, SubmitItem
 } from './StyledComponents'
 
@@ -97,6 +97,7 @@ const Calc = () => {
 
   return (
     <LabelContainer>
+      <h1>Solar Tariff Calculator</h1>
       <div className='form'>
         <p className='error'>{error}</p>
         <form onSubmit={handleSubmit}>
@@ -122,25 +123,7 @@ const Calc = () => {
                 <label>Your average daily feed-in:</label>
                 <NumberFormat decimalScale={4} fixedDecimalScale={true} name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
               </LabelItem> 
-              <>
-                {['right'].map((placement) => (
-                  <OverlayTrigger
-                    trigger="click"
-                    key={placement}
-                    placement={placement}
-                    overlay={
-                      <Popover id={`popover-positioned-${placement}`}>
-                        <Popover.Title as="h3">{`Popover ${placement}`}</Popover.Title>
-                        <Popover.Content>
-                          <strong>Holy guacamole!</strong> Check this info.
-                        </Popover.Content>
-                      </Popover>
-                    }
-                  >
-                    <Button variant="secondary">Popover on {placement}</Button>
-                  </OverlayTrigger>
-                ))}
-              </>
+              
               <SubmitItem>
                 <button type="submit" className="submit">Submit</button>
               </SubmitItem>

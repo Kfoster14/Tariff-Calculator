@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 
 export const LabelContainer = styled.div `
+    border-radius: 25px;
     border: 1px solid #16425b;
     background-color: #99d6ea;
     max-width: 950px;
@@ -12,7 +13,7 @@ export const LabelContainer = styled.div `
     top: 22rem;
     z-index: 1;
     margin-top: -1px;
-    margin-left: 620px;
+    margin-right: 30px;
     padding: 20px;
     font-family: 'Josefin Sans', sans-serif;
 `
@@ -25,10 +26,11 @@ export const LabelItem = styled.div `
 `
 
 export const SubmitItem = styled.div `
-    padding-top: 5px;
-    padding-bottom: 10px;
-    margin-left: 250px;
+    border-radius: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 290px;
     font-family: 'Josefin Sans', sans-serif;
-
+    font-size: 1.6rem;
 `
 
