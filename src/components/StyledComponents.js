@@ -1,36 +1,52 @@
 import styled from 'styled-components'
 
-
-
 export const LabelContainer = styled.div `
-    border-radius: 25px;
-    border: 1px solid #16425b;
-    background-color: #99d6ea;
-    max-width: 950px;
-    margin: 0 auto;
+    display: flex;
+    flex: wrap;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    max-width: 1200px;
+    margin-left: 600px;
     text-align: left;
     position: absolute;
-    top: 22rem;
+    top: 14rem;
     z-index: 1;
-    margin-top: -1px;
-    margin-right: 30px;
-    padding: 20px;
-    font-family: 'Josefin Sans', sans-serif;
+    padding-bottom: 100px;
+    padding-left: 50px;
+    padding-right: 70px;
+    font-family: 'Roboto', sans-serif;
+    
+    
 `
 
-export const LabelItem = styled.div `
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 1.3rem;
+export const LabelSummary = styled.h3 `
+    font-family: 'Roboto', sans-serif;
 
 `
 
-export const SubmitItem = styled.div `
-    border-radius: 25px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-left: 290px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 1.6rem;
+
+export const LabelImage = styled.div `
+    width: 100%;
+    height: auto;
+    z-index: 0;
 `
 
+
+
+export const Button = styled.button `
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 20px;
+    padding: 10px 22px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;   
+`
+    

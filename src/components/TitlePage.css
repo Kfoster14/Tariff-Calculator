@@ -1,0 +1,56 @@
+
+.title-box > h1 {
+    position: absolute;
+    top: 20rem;
+    z-index: 1;
+    margin-top: -50px;
+    text-align: center;
+    align-content: center;
+    font-family: 'Roboto', sans-serif;
+    color: hsl(210, 17%, 98%);
+    font-size: 6rem;
+    margin-left: 450px;
+    
+}
+
+.title-box > p {
+    position: absolute;
+    top: 20rem;
+    z-index: 1;
+    margin-top: 150px;
+    margin-left: 450px;
+    align-content: center;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    color: hsl(210, 17%, 98%);
+}
+
+
+.title-box .btn {
+    position: absolute;
+    top: 75%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 20px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;   
+    
+}
+
+.title-box .btn:hover {
+    background-color: black;
+}
+
+.custom-img {
+    height: 100vh;
+    object-fit: cover;
+}
+
+

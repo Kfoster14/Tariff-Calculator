@@ -1,10 +1,8 @@
 import React, { useState} from 'react'
 import NumberFormat from 'react-number-format';
-// import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-// import Popover from 'react-bootstrap/Popover';
-// import Button from "react-bootstrap/Button";
-import {LabelContainer, LabelItem, SubmitItem
-} from './StyledComponents'
+import {LabelContainer, Button, LabelSummary
+} from './StyledComponents';
+
 
 
 const Calc = () => {
@@ -96,67 +94,66 @@ const Calc = () => {
   }
 
   return (
-    <LabelContainer>
-      <h1>Solar Tariff Calculator</h1>
-      <div className='form'>
-        <p className='error'>{error}</p>
-        <form onSubmit={handleSubmit}>
-          {!results.isResult ? (
-            <div id="formitems">
-              <LabelItem>
-                <label>Your average daily usage:</label>
-                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
-              </LabelItem>
-              <LabelItem>
-                <label>Your provider's electricity fee:</label>
-                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="fee" onChange={handleChange} value={formData.fee || ""} />
-              </LabelItem>
-              <LabelItem>
-                  <label>Your provider's daily connection charge:</label>
-                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
-              </LabelItem>
-              <LabelItem>
-                <label>Your provider's daily solar metering service charge ($):</label>
-                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
-              </LabelItem>
-              <LabelItem>    
-                <label>Your average daily feed-in:</label>
-                <NumberFormat decimalScale={4} fixedDecimalScale={true} name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
-              </LabelItem> 
-              
-              <SubmitItem>
-                <button type="submit" className="submit">Submit</button>
-              </SubmitItem>
-            </div>
-        ) : (
-            <div className="summary">
-              <h2>You've entered the following data:</h2>
-              <h4>
-              Your average daily usage: {formData.dailyUsage} <br />
-              Your provider's electricity fee: {formData.fee} <br />
-              Your provider's daily connection charge: {formData.connectCharge} <br />
-              Your provider's daily solar metering service charge ($): {formData.serviceCharge} <br />
-              Your average daily feed-in (the amount you export to the grid in kwh): {formData.feedIn} <br />
-              </h4>
-              <h2>Results</h2>
-              <p>Based on your inputs, you need the following feed-in tariff to break even on your electricity bill.</p>
-              <p>Anything above this value will likely push your bill into credit.</p>
-              <div>
-                <label>Required feed-in tariff:</label>
-                <NumberFormat decimalScale={9} fixedDecimalScale={true} value={results.requiredFeedIn} />
-              </div>
-              {/* Button to clear fields */}
-              <input
-                className='button'
-                value='Calculate again'
-                type='button'
-                onClick={clearFields}
-              />
-            </div>
-          )}
-        </form>
-      </div>
-    </LabelContainer>  
+            <LabelContainer>
+              <div className='form'>
+                <p className='error'>{error}</p>
+                  <form onSubmit={handleSubmit}>
+                  {!results.isResult ? (
+                    <div id="formitems">
+                      <h3>Enter your details below:</h3>
+                        <label>Your average daily usage:
+                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
+                        </label>
+                            
+                        <label>Your average daily feed-in:
+                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
+                        </label>
+                      <br />
+                      <h3>Your provider's details:</h3><br />
+                        <label>Electricity fee:
+                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="fee" onChange={handleChange} value={formData.fee || ""} />
+                        </label>
+                      
+                        <label>Daily connection charge:
+                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
+                        </label>
+                        <label>Daily solar metering service charge ($):
+                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
+                        </label>
+                      <div>
+                          <Button type="submit" variant="secondary" className="submit" >Submit</Button>
+                      </div>
+                    </div>
+                ) : (
+                    <LabelSummary>
+                      <h2>You've entered the following data:</h2>
+                      <h4>
+                      Your average daily usage: {formData.dailyUsage} <br />
+                      Your provider's electricity fee: {formData.fee} <br />
+                      Your provider's daily connection charge: {formData.connectCharge} <br />
+                      Your provider's daily solar metering service charge ($): {formData.serviceCharge} <br />
+                      Your average daily feed-in (the amount you export to the grid in kwh): {formData.feedIn} <br />
+                      </h4>
+                      <h2>Results</h2>
+                      <p>Based on your inputs, you need the following feed-in tariff to break even on your electricity bill.</p>
+                      <p>Anything above this value will likely push your bill into credit.</p>
+                      <div>
+                        <label>Required feed-in tariff:</label>
+                        <NumberFormat decimalScale={9} fixedDecimalScale={true} value={results.requiredFeedIn} />
+                      </div>
+                      {/* Button to clear fields */}
+                      <input
+                        className='button'
+                        value='Calculate again'
+                        type='button'
+                        onClick={clearFields}
+                      />
+                    </LabelSummary>
+                      )}
+                    </form>
+                  </div>
+            </LabelContainer>
+    
   );
 }
   

@@ -1,10 +1,13 @@
 .footer-detail {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #d9d9d7;
-    font-family: 'Josefin Sans', 'sans-serif';
-    background-color: #9df3c4;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
     color: #343a40;
+    font-size: 0.8em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    margin-left: 800px;
 }
