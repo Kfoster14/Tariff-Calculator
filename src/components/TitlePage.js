@@ -8,7 +8,7 @@ import './TitlePage.css';
 
 const TitlePage = () => {
     return (
-        <Container fluid="xxl">
+        <Container fluid="xxl" className="mt-5">
             <Row>
                 <Col>
                     <Image src={keyboard} className="photo" alt="keyboard" />
