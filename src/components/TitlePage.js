@@ -1,23 +1,33 @@
-import React from 'react'
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import keyboard from './../images/keyboard.jpg'
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
+import keyboard from './../images/keyboard.jpg';
 import './TitlePage.css';
 
 const TitlePage = () => {
     return (
-        <Jumbotron fluid >
-        <div className="text-center mb-3 title-box">
-            <h1>Solar Tariff Calculator</h1>
-            <p>Do you have solar panels? <br></br>
-            This is a simple calculator to help you figure out the best feed-in tariff. <br></br>
-                Just enter the usage information from your electricity bill.</p>
-            <img src={keyboard} className="custom-img d-block w-100" alt="keyboard" fluid />
-            <a href="calculator">
-                <button className="m-2 btn" href="/calculator">Start Now</button>
-            </a>
-        </div>
-        
-      </Jumbotron>
+        <Container fluid="xxl">
+            <Row>
+                <Col>
+                    <Image src={keyboard} className="photo" alt="keyboard" />
+                    <div className="title-box">
+                        <h1>Solar Tariff Calculator</h1>
+                        <p>Do you have solar panels?</p>
+                        <div className="title-para">
+                            <p>This is a simple calculator to help you figure out the best feed-in tariff. </p>
+                        </div>
+                    </div>
+                   
+                    <div className="display">    
+                        <a href="calculator">
+                            <button className="m-2 btn" href="/calculator">Start Now</button>
+                        </a>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

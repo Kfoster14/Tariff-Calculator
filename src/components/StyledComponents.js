@@ -1,13 +1,11 @@
 import styled from 'styled-components'
 
 export const LabelContainer = styled.div `
-    display: flex;
-    flex: wrap;
     border-radius: 5px;
     border: 1px solid #dee2e6;
     background-color: #f8f9fa;
     max-width: 1200px;
-    margin-left: 600px;
+    margin-left: 650px;
     text-align: left;
     position: absolute;
     top: 14rem;

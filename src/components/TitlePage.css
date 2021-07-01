@@ -1,36 +1,29 @@
 
-.title-box > h1 {
-    position: absolute;
-    top: 20rem;
-    z-index: 1;
-    margin-top: -50px;
+
+.title-box {
     text-align: center;
-    align-content: center;
-    font-family: 'Roboto', sans-serif;
-    color: hsl(210, 17%, 98%);
-    font-size: 6rem;
-    margin-left: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 1;
     
 }
 
-.title-box > p {
-    position: absolute;
-    top: 20rem;
-    z-index: 1;
-    margin-top: 150px;
-    margin-left: 450px;
-    align-content: center;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.8rem;
-    color: hsl(210, 17%, 98%);
+.title-box h1 {
+    font-size: 4rem;
+    
 }
 
+.title-box p {
+    font-size: 1.4rem;
+}
 
-.title-box .btn {
+.display .btn {
     position: absolute;
     top: 75%;
-    left: 47%;
+    left: 48%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #555;
@@ -44,13 +37,7 @@
     
 }
 
-.title-box .btn:hover {
+.display .btn:hover {
     background-color: black;
 }
-
-.custom-img {
-    height: 100vh;
-    object-fit: cover;
-}
-
 
