@@ -21,8 +21,8 @@ const TitlePage = () => {
                     </div>
                    
                     <div className="display">    
-                        <a href="calculator">
-                            <button className="m-2 btn" href="/calculator">Start Now</button>
+                        <a href="/calculator">
+                            <button className="m-2 btn">Start Now</button>
                         </a>
                     </div>
                 </Col>
