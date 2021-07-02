@@ -1,22 +1,17 @@
 import styled from 'styled-components'
 
-export const LabelContainer = styled.div `
-    border-radius: 5px;
-    border: 1px solid #dee2e6;
-    background-color: #f8f9fa;
-    max-width: 1200px;
-    margin-left: 650px;
-    text-align: left;
-    position: absolute;
-    top: 14rem;
-    z-index: 1;
-    padding-bottom: 100px;
-    padding-left: 50px;
-    padding-right: 70px;
-    font-family: 'Roboto', sans-serif;
-    
-    
+export const FormItems = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+
 `
+
+
+
 
 export const LabelSummary = styled.h3 `
     font-family: 'Roboto', sans-serif;
@@ -24,15 +19,16 @@ export const LabelSummary = styled.h3 `
 `
 
 
-export const LabelImage = styled.div `
-    width: 100%;
-    height: auto;
-    z-index: 0;
-`
+
 
 
 
 export const Button = styled.button `
+    margin: 1rem 0 2rem 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     bottom: 0%;
     left: 50%;

@@ -44,3 +44,15 @@
 .mt-5 {
     margin-top: ($spacer * 3) !important;
 }
+
+body, html {
+    height: 100%;
+    }
+
+.bg {
+    background-image: url("../images/keyboard.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }

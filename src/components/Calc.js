@@ -1,7 +1,9 @@
-import React, { useState} from 'react'
+import React, { useState} from 'react';
+import { MDBContainer, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 import NumberFormat from 'react-number-format';
-import {LabelContainer, Button, LabelSummary
+import {LabelSummary, FormItems
 } from './StyledComponents';
+import './Calc.css';
 
 
 
@@ -64,12 +66,6 @@ const Calc = () => {
     const meterServiceCharge = Number(serviceCharge);
     const dailyFeedIn = Number(feedIn);
     const calculatedFeedIn = (usageFeeGst + dailyConnectCharge + meterServiceCharge) / (dailyFeedIn);
-    console.log(usageFee);
-    console.log(usageFeeGst);
-    console.log(dailyConnectCharge);
-    console.log(meterServiceCharge);
-    console.log(dailyFeedIn);
-    console.log(calculatedFeedIn);
     
     setResults({
       requiredFeedIn: calculatedFeedIn,
@@ -94,12 +90,14 @@ const Calc = () => {
   }
 
   return (
-            <LabelContainer>
-              <div className='form'>
+            <MDBContainer>
+              <MDBCard>
+
+              <MDBCardBody className="mx-4 mt-4">
                 <p className='error'>{error}</p>
                   <form onSubmit={handleSubmit}>
                   {!results.isResult ? (
-                    <div id="formitems">
+                    <FormItems>
                       <h3>Enter your details below:</h3>
                         <label>Your average daily usage:
                           <NumberFormat decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
@@ -120,10 +118,13 @@ const Calc = () => {
                         <label>Daily solar metering service charge ($):
                           <NumberFormat decimalScale={4} fixedDecimalScale={true} name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
                         </label>
-                      <div>
-                          <Button type="submit" variant="secondary" className="submit" >Submit</Button>
-                      </div>
-                    </div>
+                      <MDBBtn
+                        color="danger"
+                        type="submit"
+                        className="btn-block z-depth-2">
+                          Submit
+                      </MDBBtn>
+                    </FormItems>
                 ) : (
                     <LabelSummary>
                       <h2>You've entered the following data:</h2>
@@ -151,8 +152,9 @@ const Calc = () => {
                     </LabelSummary>
                       )}
                     </form>
-                  </div>
-            </LabelContainer>
+                  </MDBCardBody>
+              </MDBCard>
+            </MDBContainer>
     
   );
 }
