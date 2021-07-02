@@ -20,7 +20,7 @@
     font-size: 1.4rem;
 }
 
-.display .btn {
+.btn {
     position: absolute;
     top: 75%;
     left: 48%;
@@ -37,7 +37,7 @@
     
 }
 
-.display .btn:hover {
+.btn:hover {
     background-color: black;
 }
 

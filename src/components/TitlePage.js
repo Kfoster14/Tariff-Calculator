@@ -2,6 +2,8 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { LinkContainer } from "react-router-bootstrap";
+import Button from "react-bootstrap/Button";
 import Image from 'react-bootstrap/Image';
 import keyboard from './../images/keyboard.jpg';
 import './TitlePage.css';
@@ -21,11 +23,9 @@ const TitlePage = () => {
                         </div>
                     </div>
                    
-                    <div className="display">    
-                        <a href="calculator">
-                            <button className="m-2 btn">Start Now</button>
-                        </a>
-                    </div>
+                    <LinkContainer to="/calculator">
+                        <Button variant="secondary" className="btn">Start Now</Button>
+                    </LinkContainer>
                 </Col>
             </Row>
         </Container>
