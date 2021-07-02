@@ -6,6 +6,7 @@ import Image from 'react-bootstrap/Image';
 import keyboard from './../images/keyboard.jpg';
 import './TitlePage.css';
 
+
 const TitlePage = () => {
     return (
         <Container fluid="xxl" className="mt-5">
@@ -21,7 +22,7 @@ const TitlePage = () => {
                     </div>
                    
                     <div className="display">    
-                        <a href="/calculator">
+                        <a href="calculator">
                             <button className="m-2 btn">Start Now</button>
                         </a>
                     </div>
