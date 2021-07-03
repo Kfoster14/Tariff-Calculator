@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import "./NavBar.css";
 
+
 const MyNavbar = () => {
     return (
       <Navbar
@@ -13,9 +14,7 @@ const MyNavbar = () => {
       expand="lg"
       className="animate-navbar nav-theme justify-content-between"
     >
-      <Navbar.Brand href="/" >
-      <i class="fas fa-home fa-lg"></i>
-      </Navbar.Brand>
+      
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto ">

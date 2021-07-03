@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBListGroup, MDBListGroupItem } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBCardImage, MDBBtn, MDBCard, MDBCardBody, MDBListGroup, MDBListGroupItem } from 'mdbreact';
 import NumberFormat from 'react-number-format';
-import './Calc.css';
+import iandooley from "./../images/iandooley.jpg";
 
 
 
@@ -92,17 +92,18 @@ const Calc = () => {
       <MDBRow>
         <MDBCol md="6">
           <MDBCard>
-            <div className="header px-5 py-3 grey lighten-2 text-center">
-              <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
-                Enter your details below
-              </h3>
-            </div>
+          <MDBCardImage className="img-fluid" src={iandooley} />
             <MDBCardBody className="mx-4 mt-2">
               <p className='error'>{error}</p>
                 <form onSubmit={handleSubmit}>
                   {!results.isResult ? (
                     <div>
-                      <p className='h5 text-left mb-3'>Details from your electricity bill </p>
+                      <div className="header px-5 grey lighten-2 text-center">
+                      <h3 className="deep-grey-text mt-1 mb-1 pb-1 mx-1">
+                        Enter your details below
+                      </h3>
+                    </div>
+                      <p className='h5 text-left my-5'>Details from your electricity bill </p>
                         <label className="d-flex py-3 grey-text">Your average daily usage</label>
                           <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
                         
@@ -123,7 +124,7 @@ const Calc = () => {
                         
                       <div className="mb-2 mt-4 py-1 text-center">
                         <MDBBtn
-                          gradient="purple" rounded
+                          gradient="blue" rounded
                           type="submit"
                           className="btn-block z-depth-2">
                             Submit
@@ -144,13 +145,13 @@ const Calc = () => {
                       <p>Based on your inputs, you need the following feed-in tariff to break even on your electricity bill.</p>
                       <p>Anything above this value will likely push your bill into credit.</p>
                       <div>
-                        <label className="h4 d-flex py-2 mt-4 mb-3">Required feed-in tariff:</label>
+                        <label className="h4 d-flex py-2 mt-4 mb-3">Your required feed-in tariff</label>
                         <NumberFormat decimalScale={9} fixedDecimalScale={true} value={results.requiredFeedIn} />
                       </div>
                       {/* Button to clear fields */}
                         <div className="mb-1 mt-4 py-1 text-center">
                           <input
-                            gradient="purple" rounded
+                            gradient="blue" rounded
                             className='btn-block z-depth-2 my-5'
                             value='Calculate again'
                             type='button'
