@@ -1,32 +1,32 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIcon, MDBCardImage, MDBCardBody } from "mdbreact";
 import { LinkContainer } from "react-router-bootstrap";
-import Button from "react-bootstrap/Button";
-import './TitlePage.css';
+import davidegoldin from "./../images/davidegoldin.jpg";
 
 
 const TitlePage = () => {
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <div className="bg"></div>
-                    <div className="title-box">
-                        <h1>Solar Tariff Calculator</h1>
-                        <p>Do you have solar panels?</p>
-                        <div className="title-para">
-                            <p>This is a simple calculator to help you figure out the best feed-in tariff. </p>
-                        </div>
-                    </div>
-                   
-                    <LinkContainer to="/calculator">
-                        <Button variant="secondary" className="btn">Start Now</Button>
-                    </LinkContainer>
-                </Col>
-            </Row>
-        </Container>
+        <MDBContainer className="mt-5 text-center">
+            <MDBRow>
+                <MDBCol>
+                    <MDBJumbotron className="p-0">
+                        <MDBCardTitle className="h1-responsive pt-3 m-5 font-bold">Solar Tariff Calculator</MDBCardTitle>
+                        <MDBCardImage
+                            className="img-fluid"
+                            src={davidegoldin}
+                        />
+                        <MDBCardBody>
+                            <p className="h5 mx-5 mb-5">Do you have solar panels? </p>
+                            <p>This is a simple calculator to help you figure out the best feed-in tariff.</p>
+                            
+                            <LinkContainer to="/calculator">
+                                <MDBBtn gradient="purple" rounded className="mb-5"><MDBIcon icon="clone" className="mr-2"></MDBIcon> Start Now</MDBBtn>
+                            </LinkContainer>
+                        </MDBCardBody>
+                    </MDBJumbotron>
+                </MDBCol>
+            </MDBRow>
+        </MDBContainer>
     )
 }
 
