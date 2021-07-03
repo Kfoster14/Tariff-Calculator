@@ -1,8 +1,6 @@
 import React, { useState} from 'react';
-import { MDBContainer, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 import NumberFormat from 'react-number-format';
-import {LabelSummary, FormItems
-} from './StyledComponents';
 import './Calc.css';
 
 
@@ -90,44 +88,50 @@ const Calc = () => {
   }
 
   return (
-            <MDBContainer>
-              <MDBCard>
-
-              <MDBCardBody className="mx-4 mt-4">
-                <p className='error'>{error}</p>
-                  <form onSubmit={handleSubmit}>
+    <MDBContainer >
+      <MDBRow>
+        <MDBCol md="6" className="block-example border border-dark">
+        <div className="header px-5 py-3 grey lighten-2 text-center">
+          <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
+            Enter your details below
+          </h3>
+        </div>
+              <p className='error'>{error}</p>
+                <form onSubmit={handleSubmit}>
                   {!results.isResult ? (
-                    <FormItems>
-                      <h3>Enter your details below:</h3>
-                        <label>Your average daily usage:
-                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
-                        </label>
+                    <div>
+                      <p className='h5 text-left my-4'>Details from your electricity bill </p>
+                        <label className="d-flex py-3 grey-text">Your average daily usage</label>
+                          <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
+                        
                             
-                        <label>Your average daily feed-in:
-                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
-                        </label>
-                      <br />
-                      <h3>Your provider's details:</h3><br />
-                        <label>Electricity fee:
-                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="fee" onChange={handleChange} value={formData.fee || ""} />
-                        </label>
+                        <label className="d-flex py-3 grey-text">Your average daily feed-in</label>
+                          <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="feedIn" onChange={handleChange} value={formData.feedIn || ""} />
+                        
                       
-                        <label>Daily connection charge:
-                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
-                        </label>
-                        <label>Daily solar metering service charge ($):
-                          <NumberFormat decimalScale={4} fixedDecimalScale={true} name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
-                        </label>
-                      <MDBBtn
-                        color="danger"
-                        type="submit"
-                        className="btn-block z-depth-2">
-                          Submit
-                      </MDBBtn>
-                    </FormItems>
+                      <p className='h5 text-left my-4'>Details from your electricity provider</p>
+                        <label className="d-flex py-3 grey-text">Electricity fee</label>
+                          <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="fee" onChange={handleChange} value={formData.fee || ""} />
+                        
+                        <label className="d-flex py-3 grey-text">Daily connection charge</label>
+                          <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
+                        
+                        <label className="d-flex py-3 grey-text">Daily solar metering service charge ($)</label>
+                          <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
+                        
+                      <div className="mb-1 mt-4 py-3">
+                        <MDBBtn
+                          color="primary"
+                          size="lg"
+                          type="submit"
+                          className="btn-block z-depth-2">
+                            Submit
+                        </MDBBtn>
+                      </div>
+                    </div>
                 ) : (
-                    <LabelSummary>
-                      <h2>You've entered the following data:</h2>
+                    <div>
+                      <p className='h5 text-left my-4'>You've entered the following data</p>
                       <h4>
                       Your average daily usage: {formData.dailyUsage} <br />
                       Your provider's electricity fee: {formData.fee} <br />
@@ -135,11 +139,11 @@ const Calc = () => {
                       Your provider's daily solar metering service charge ($): {formData.serviceCharge} <br />
                       Your average daily feed-in (the amount you export to the grid in kwh): {formData.feedIn} <br />
                       </h4>
-                      <h2>Results</h2>
+                      <p className='h5 text-left my-4'>Results </p>
                       <p>Based on your inputs, you need the following feed-in tariff to break even on your electricity bill.</p>
                       <p>Anything above this value will likely push your bill into credit.</p>
                       <div>
-                        <label>Required feed-in tariff:</label>
+                        <label className="d-flex py-3 grey-text">Required feed-in tariff:</label>
                         <NumberFormat decimalScale={9} fixedDecimalScale={true} value={results.requiredFeedIn} />
                       </div>
                       {/* Button to clear fields */}
@@ -149,12 +153,12 @@ const Calc = () => {
                         type='button'
                         onClick={clearFields}
                       />
-                    </LabelSummary>
+                    </div>
                       )}
-                    </form>
-                  </MDBCardBody>
-              </MDBCard>
-            </MDBContainer>
+                  </form>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
     
   );
 }
