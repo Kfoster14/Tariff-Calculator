@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIcon, MDBCardImage, MDBCardBody } from "mdbreact";
+import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBIcon } from "mdbreact";
 import { LinkContainer } from "react-router-bootstrap";
 import yoshisugimoto from "./../images/yoshisugimoto.jpg";
 

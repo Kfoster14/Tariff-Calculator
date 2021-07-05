@@ -3,6 +3,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import "./NavBar.css";
+import { NavbarBrand } from 'react-bootstrap';
+import { MDBIcon } from 'mdbreact';
 
 
 const MyNavbar = () => {
@@ -13,8 +15,10 @@ const MyNavbar = () => {
       variant="dark"
       expand="lg"
       className="animate-navbar nav-theme justify-content-between"
-    >
-      
+      >
+      <NavbarBrand>
+        <MDBIcon icon="solar-panel" />
+      </NavbarBrand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto ">
