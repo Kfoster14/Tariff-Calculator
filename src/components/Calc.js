@@ -104,7 +104,7 @@ const Calc = () => {
                       </h3>
                     </div>
                       <p className='h5 text-left my-5'>Details from your electricity bill </p>
-                        <label className="d-flex py-3 grey-text">Your average daily usage</label>
+                        <label className="d-flex py-3 grey-text">Your average daily usage (how much you import from the grid in kwh)</label>
                           <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="dailyUsage" onChange={handleChange} value={formData.dailyUsage || ""} />
                         
                             
@@ -113,10 +113,10 @@ const Calc = () => {
                         
                       
                       <p className='h5 text-left mt-5'>Details from your electricity provider</p>
-                        <label className="d-flex py-4 grey-text">Electricity fee</label>
+                        <label className="d-flex py-4 grey-text">Electricity fee ($ per kwh)</label>
                           <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="fee" onChange={handleChange} value={formData.fee || ""} />
                         
-                        <label className="d-flex py-3 grey-text">Daily connection charge</label>
+                        <label className="d-flex py-3 grey-text">Daily connection charge ($)</label>
                           <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="connectCharge" onChange={handleChange} value={formData.connectCharge || ""} />
                         
                         <label className="d-flex py-3 grey-text">Daily solar metering service charge ($)</label>
@@ -130,34 +130,37 @@ const Calc = () => {
                             Submit
                         </MDBBtn>
                       </div>
+                      <div className="mt-4 text-center">
+                      Photo by <a href="https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ian dooley</a> on <a href="https://unsplash.com/s/photos/hot-air-balloons?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                      </div>
                     </div>
                 ) : (
                     <div>
                       <p className='h5 text-left my-3'>You've entered the following data</p>
                       <MDBListGroup style={{ width: "30rem" }}>
-                        <MDBListGroupItem>Your average daily usage: {formData.dailyUsage} </MDBListGroupItem>
-                        <MDBListGroupItem>Your provider's electricity fee: {formData.fee}</MDBListGroupItem>
-                        <MDBListGroupItem>Your provider's daily connection charge: {formData.connectCharge}</MDBListGroupItem>
+                        <MDBListGroupItem>Your average daily usage (kwh): {formData.dailyUsage} </MDBListGroupItem>
+                        <MDBListGroupItem>Your provider's electricity fee ($ per kwh): {formData.fee}</MDBListGroupItem>
+                        <MDBListGroupItem>Your provider's daily connection charge ($): {formData.connectCharge}</MDBListGroupItem>
                         <MDBListGroupItem>Your provider's daily solar metering service charge ($): {formData.serviceCharge}</MDBListGroupItem>
-                        <MDBListGroupItem>Your average daily feed-in: {formData.feedIn}</MDBListGroupItem>
+                        <MDBListGroupItem>Your average daily feed-in (kwh): {formData.feedIn}</MDBListGroupItem>
                       </MDBListGroup>
                       <p className='h4 text-left mt-5 mb-4'>Results </p>
                       <p>Based on your inputs, you need the following feed-in tariff to break even on your electricity bill.</p>
                       <p>Anything above this value will likely push your bill into credit.</p>
                       <div>
-                        <label className="h4 d-flex py-2 mt-4 mb-3">Your required feed-in tariff</label>
+                        <label className="h4 d-flex py-2 mt-4 mb-3">Your required feed-in tariff ($)</label>
                         <NumberFormat decimalScale={9} fixedDecimalScale={true} value={results.requiredFeedIn} />
                       </div>
                       {/* Button to clear fields */}
                         <div className="mb-1 mt-4 py-1 text-center">
                           <input
-                            gradient="blue" rounded
-                            className='btn-block z-depth-2 my-5'
-                            value='Calculate again'
+                            className='btn-block z-depth-2 my-5 light-blue rounded'
+                            value='CALCULATE AGAIN'
                             type='button'
                             onClick={clearFields}
                           />
                         </div>
+                        <p>Note: This is a simple calculator and may not cover all of the variables used by your system. It is meant to be used as a rough guide. To be as accurate as possible, this calculator requires your average daily usage based on at least one year's worth of data.</p>
                     </div>
                       )}
                   </form>
