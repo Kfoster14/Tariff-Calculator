@@ -90,7 +90,7 @@ const Calc = () => {
   return (
     <MDBContainer >
       <MDBRow>
-        <MDBCol md="6">
+        <MDBCol md="12">
           <MDBCard>
           <MDBCardImage className="img-fluid" src={iandooley} />
             <MDBCardBody className="mx-4 mt-2">
@@ -122,7 +122,7 @@ const Calc = () => {
                         <label className="d-flex py-3 grey-text">Daily solar metering service charge ($)</label>
                           <NumberFormat className="d-flex px-1 py-1" decimalScale={4} fixedDecimalScale={true} name="serviceCharge" onChange={handleChange} value={formData.serviceCharge || ""} />
                         
-                      <div className="mb-2 mt-4 py-1 text-center">
+                      <div className="mb-2 mt-4 py-1 text-left">
                         <MDBBtn
                           gradient="blue" rounded
                           type="submit"
@@ -137,24 +137,29 @@ const Calc = () => {
                 ) : (
                     <div>
                       <p className='h5 text-left my-3'>You've entered the following data</p>
-                      <MDBListGroup style={{ width: "30rem" }}>
-                        <MDBListGroupItem>Your average daily usage (kwh): {formData.dailyUsage} </MDBListGroupItem>
-                        <MDBListGroupItem>Your provider's electricity fee ($ per kwh): {formData.fee}</MDBListGroupItem>
-                        <MDBListGroupItem>Your provider's daily connection charge ($): {formData.connectCharge}</MDBListGroupItem>
-                        <MDBListGroupItem>Your provider's daily solar metering service charge ($): {formData.serviceCharge}</MDBListGroupItem>
-                        <MDBListGroupItem>Your average daily feed-in (kwh): {formData.feedIn}</MDBListGroupItem>
-                      </MDBListGroup>
-                      <p className='h4 text-left mt-5 mb-4'>Results </p>
-                      <p>Based on your inputs, you need the following feed-in tariff to break even on your electricity bill.</p>
-                      <p>Anything above this value will likely push your bill into credit.</p>
-                      <div>
-                        <label className="h4 d-flex py-2 mt-4 mb-3">Your required feed-in tariff ($)</label>
-                        <NumberFormat decimalScale={9} fixedDecimalScale={true} value={results.requiredFeedIn} />
-                      </div>
+                      <MDBContainer className="d-flex">
+                        <MDBListGroup style={{ width: "30rem" }}>
+                          <MDBListGroupItem>Your average daily usage (kwh): {formData.dailyUsage} </MDBListGroupItem>
+                          <MDBListGroupItem>Your provider's electricity fee ($ per kwh): {formData.fee}</MDBListGroupItem>
+                          <MDBListGroupItem>Your provider's daily connection charge ($): {formData.connectCharge}</MDBListGroupItem>
+                          <MDBListGroupItem>Your provider's daily solar metering service charge ($): {formData.serviceCharge}</MDBListGroupItem>
+                          <MDBListGroupItem>Your average daily feed-in (kwh): {formData.feedIn}</MDBListGroupItem>
+                        </MDBListGroup>
+                      </MDBContainer>
+                      <MDBContainer className="blue lighten-4 px-5 pb-3 text-center">
+                        <p className='h3 text-center mt-5 mb-4'>Results </p>
+                        <p>Based on your inputs, you need the following feed-in tariff to break even on your electricity bill.</p>
+                        <p>Anything above this value will likely push your bill into credit.</p>
+                        <div>
+                          <label className="h5 d-flex py-2 mt-4 mb-3">Your required feed-in tariff ($)   
+                          <NumberFormat decimalScale={2} fixedDecimalScale={true} value={results.requiredFeedIn} />
+                          </label>
+                        </div>
+                      </MDBContainer>
                       {/* Button to clear fields */}
                         <div className="mb-1 mt-4 py-1 text-center">
                           <input
-                            className='btn-block z-depth-2 my-5 light-blue rounded'
+                            className='btn-block z-depth-2 my-5 blue lighten-4 rounded py-2 px-2'
                             value='CALCULATE AGAIN'
                             type='button'
                             onClick={clearFields}

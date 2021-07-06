@@ -16,7 +16,7 @@ const TitlePage = () => {
                                 <p className="h5 mx-5 mb-5">Do you have solar panels? </p>
                                 <p>This is a simple calculator to help you figure out the best feed-in tariff.</p>
                                 <LinkContainer to="/calculator">
-                                    <MDBBtn gradient="blue" rounded className="mb-5"><MDBIcon icon="clone" className="mr-2"></MDBIcon> Start Now</MDBBtn>
+                                    <MDBBtn gradient="blue" rounded className="mb-5"><MDBIcon icon="clone"></MDBIcon> Start Now</MDBBtn>
                                 </LinkContainer>
                         </MDBCol>
                     </MDBJumbotron>
