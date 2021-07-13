@@ -38,7 +38,7 @@ const Calc = () => {
     if (isNaN(dailyUsage) || isNaN(fee) || isNaN(connectCharge) || isNaN(serviceCharge) || isNaN(feedIn)) {
       actualError = 'All values must be a valid number';
     }
-    if (dailyUsage <= 0 || fee <= 0 || connectCharge <= 0 || serviceCharge <= 0 || feedIn <= 0) {
+    if (dailyUsage <= 0 || fee <= 0 || connectCharge < 0 || serviceCharge < 0 || feedIn <= 0) {
       actualError = 'All values must be a positive number';
     }
     if (actualError) {
