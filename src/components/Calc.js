@@ -151,7 +151,7 @@ const Calc = () => {
                         <p>Based on your inputs, you need the following feed-in tariff to break even on your electricity bill.</p>
                         <p>Anything above this value will likely push your bill into credit.</p>
                         <div>
-                          <label className="h5 d-flex py-2 mt-4 mb-3">Your required feed-in tariff ($ per kwh)   
+                          <label className="h6 py-2 mt-4 mb-3">Required feed-in tariff ($ per kwh)   
                           <NumberFormat decimalScale={2} fixedDecimalScale={true} value={results.requiredFeedIn} />
                           </label>
                         </div>
